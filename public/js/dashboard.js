@@ -1,6 +1,9 @@
-function updateModalEmail (userEmail) {
+function updateModalEmail (user) {
+    const userData = JSON.parse(user);
+    console.log(userData);
     const modal = document.getElementById('deleteUser');
-    modal.querySelector("strong").textContent = userEmail;
+    modal.querySelector("strong").textContent = userData.email;
+    document.getElementById('userToDelete').value = userData.id;
 }
 
 document.addEventListener('DOMContentLoaded', function () {

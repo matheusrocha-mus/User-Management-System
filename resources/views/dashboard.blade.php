@@ -136,7 +136,7 @@
                                             <td>{{ $user->created_at }}</td>
                                             <td>
                                                 @if ($user->role === 'USER')
-                                                    <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#deleteUser" onclick="updateModalEmail('{{ $user->email }}');">Delete</button>
+                                                    <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#deleteUser" onclick="updateModalEmail('{{ $user }}');">Delete</button>
                                                 @endif
                                             </td>
                                         </tr>
@@ -159,11 +159,13 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="confirm-delete-user-form" class="d-flex flex-column gap-3" method="DELETE" action="/user">
-                        <input type="hidden" name="userToDelete" value='{{ $user }}' />
-                        <p>Are you sure you want to delete user <strong></strong>? This action is irreversible.</p>
-                        <button id="confirm-delete-user" type="submit" class="btn">Confirm</button>
-                    </form>
+                <form id="confirm-delete-user-form" class="d-flex flex-column gap-3" method="POST" action="/deleteUser">
+                    @csrf
+                    @method('DELETE')
+                    <input id="userToDelete" type="hidden" name="userToDelete" />
+                    <p>Are you sure you want to delete user <strong></strong>? This action is irreversible.</p>
+                    <button id="confirm-delete-user" type="submit" class="btn">Confirm</button>
+                </form>
                 </div>
             </div>
         </div>

@@ -63,15 +63,12 @@ class UserController extends Controller
 
     public function delete(Request $request)
     {
-        $deleteUserAction = new DeleteUser($request->user);
-        $deleteUserAction->delete($request->user);
-        return redirect()->route('dashboard');
-    }
+        $id = $request->userToDelete;
 
-    /* public function delete($id)
-    {
+        error_log('userId: '.$id);
+
         $user = User::find($id);
         $user->delete();
         return redirect()->route('dashboard');
-    } */
+    }
 }

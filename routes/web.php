@@ -19,4 +19,4 @@ Route::post('/registerAdmin', [UserController::class, 'create']);
 
 Route::get('/search', [UserController::class, 'search']);
 
-Route::delete('/user', [UserController::class, 'delete']);
+Route::delete('/deleteUser', [UserController::class, 'delete']);
