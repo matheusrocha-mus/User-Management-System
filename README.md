@@ -1,66 +1,33 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><img src="public/img/ums-logo.png" width="300" alt="Logo"></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# About The Project
 
-## About Laravel
+<div style="text-align: justify">
+This project was part of a recruitment process that I participated in for a job application that I was interested in - basically, candidates had to create an application in Laravel that met requisites that the recruiters presented to us, and we had one week to implement everything, test and then deliver. It was my first time in a long time coming back to PHP, and the first time ever working with Laravel, and because of that I really struggled for the first few days - but after that, I started to pick up on some similarities between Laravel and other frameworks that I had worked on in the past, and then the project started to evolve much faster. Overall I really enjoyed it, I think I made some cool stuff with it and I can't wait to work with it again in the future!
+</div>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# Main Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Both Users and Admins can login at the root page;
+- Users can register at the root page;
+- All authentication is done with Jetstream/Fortify;
+- Password complexity in conformity with OWASP recomendations;
+- Passwords hashed with Jetstream/Fortify;
+- Both Admins and Users can have their accounts locked if they fail too many times to login in a certain period of time (Fortify's default is 5 times per minute but can be customized);
+- After login Users are redirected to a profile page while Admins are redirected to a dashboard page;
+- Regular Users cannot access dashboard, only Admins;
+- Meanwhile Admins can access both the profile page and the dashboard;
+- At the profile page Users and Admins can view, edit and even delete their profile;
+- At the dashboard Admins can register other Admins;
+- Admins can see a panel listing all Users, where they can filter results by role, date of register and a text field for name/email;
+- Admins can see both Users and Admins in this panel (but not themselves);
+- Admins can delete Users in this panel, but cannot delete other Admins;
+- All operations fully integrated with a SQLite database.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Setup Process
+1. Clone the repo (`git clone https://github.com/matheusrocha-mus/User-Management-System.git`);
+2. Update the `.env` file to use SQLite (set `DB_CONNECTION=sqlite`, comment out the rest of the DB section);
+3. At the repo's root, enter the command `npm run dev` (install npm if you don't have yet);
+4. Then, follow with the command `php artisan migrate`;
+5. Then, `php artisan db:seed` - this will generate some dummy users and admins. The email of the default Admin is 'admin@example.com' and it's password is '1234A&5678b';
+6. Finally, `php artisan serve` - if all steps were followed correctly, the application should be up and running at `http://localhost:8000`.
