@@ -7,6 +7,13 @@
     @endpush
 
         <x-validation-errors class="mb-4" />
+
+        @session('status')
+            <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
+                {{ $value }}
+            </div>
+        @endsession
+
         <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">
             <div id="admin-card" class="flex flex-col gap-6 overflow-hidden rounded-lg p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 transition duration-300 focus:outline-none md:row-span-3 lg:p-10 lg:pb-10 bg-zinc-900 ring-zinc-800 text-white/70 focus-visible:ring-[#FF2D20]">
                 <div id="admin-card-content" class="flex justify-content-center gap-6 flex-col">
