@@ -7,7 +7,7 @@
     @endpush
 
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-white leading-tight">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
@@ -146,27 +146,30 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
 
-                <div class="modal fade" id="deleteUser" tabindex="-1" aria-labelledby="deleteUserLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-dark modal-dialog-centered">
-                        <div class="modal-content bg-dark text-white">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="deleteUserModalLabel">Delete User</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form id="confirm-delete-user-form" class="d-flex flex-column gap-3" method="DELETE" action="/user">
-                                    <input type="hidden" name="userToDelete" value='{{ $user }}' />
-                                    <p>Are you sure you want to delete user <strong></strong>? This action is irreversible.</p>
-                                    <button id="confirm-delete-user" type="submit" class="btn">Confirm</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+    @push('modals')
+    <div class="modal fade" id="deleteUser" tabindex="-1" aria-labelledby="deleteUserLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-dark modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteUserModalLabel">Delete User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="confirm-delete-user-form" class="d-flex flex-column gap-3" method="DELETE" action="/user">
+                        <input type="hidden" name="userToDelete" value='{{ $user }}' />
+                        <p>Are you sure you want to delete user <strong></strong>? This action is irreversible.</p>
+                        <button id="confirm-delete-user" type="submit" class="btn">Confirm</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    @endpush
+
     @push('scripts')
     <script src="{{ url('js/dashboard.js') }}"></script>
     @endpush

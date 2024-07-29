@@ -14,6 +14,22 @@
 
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+            <x-form-section submit="updateProfileInformation">
+                <x-slot name="title">
+                    {{ __('Register Date') }}
+                </x-slot>
+
+                <x-slot name="description">
+                    {{ __('Date and time that your account was created.') }}
+                </x-slot>
+
+                <x-slot name="form">
+                    <p class="col-span-6 text-white">{{ Auth::user()->created_at }}</p>
+                </x-slot>
+            </x-form-section>
+
+            <x-section-border />
+
             @if (Laravel\Fortify\Features::canUpdateProfileInformation())
                 @livewire('profile.update-profile-information-form')
 

@@ -43,6 +43,10 @@
             <main>
                 {{ $slot }}
             </main>
+
+            <footer class="py-16 text-center text-sm text-white/70">
+                User Management System 1.0 &copy; 2024
+            </footer>
         </div>
 
         @stack('modals')
