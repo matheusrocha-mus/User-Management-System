@@ -11,8 +11,12 @@ class UserController extends Controller
 {
     public function dashboard()
     {
-        $users = User::where('id', '!=', auth()->id())->get();
-        return view('dashboard', compact('users'));
+        if (auth()->user()->role == 'USER') {
+            return redirect()->route('profile.show');
+        } else {
+            $users = User::where('id', '!=', auth()->id())->get();
+            return view('dashboard', compact('users'));
+        }
     }
 
     public function search(Request $request)
