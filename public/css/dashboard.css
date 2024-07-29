@@ -1,0 +1,36 @@
+body {
+    background-image: url(../img/laravel-background.png);
+    background-repeat: no-repeat;
+}
+
+#square-button { background-color: transparent !important; }
+
+.bi-arrow-down-square-fill:hover {
+    background-color: white !important;
+    fill: #111111 !important;
+    box-sizing: border-box;
+    border-radius: 20%;
+    border: 1px solid #FF2D20 !important;
+}
+
+.accordion-header button { color: white !important; }
+
+.accordion-body { background-color: #111111 !important; }
+
+.accordion-body p, .accordion-body button { color: white !important; }
+
+.search-bar input {
+    background-color: transparent !important;
+    border: 1px solid #FF2D20 !important;
+    color: white !important;
+}
+
+.search-bar input::placeholder { color: #7d7d7d !important; }
+
+.search-bar button { border: 1px solid #FF2D20 !important; }
+
+th, td { vertical-align: middle; }
+
+.collapse.show {
+    visibility: visible;
+}
