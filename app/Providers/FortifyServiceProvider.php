@@ -67,13 +67,11 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::authenticateUsing(function (Request $request) {
             $user = User::where('email', $request->email)->first();
 
-            /* error_log('requestRole: '.$request->role);
-            error_log('userRole: '.$user->role); */
-
             if ($user &&
                 Hash::check($request->password, $user->password) &&
                 $request->role === $user->role) {
-                return $user;
+                    return $user;
+            } else {
             }
         });
     }

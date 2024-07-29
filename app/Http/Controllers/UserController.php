@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Jetstream\DeleteUser;
 use Illuminate\Http\Request;
 use Hamcrest\Core\IsNull;
@@ -17,6 +18,13 @@ class UserController extends Controller
             $users = User::where('id', '!=', auth()->id())->get();
             return view('dashboard', compact('users'));
         }
+    }
+
+    public function create(Request $request)
+    {
+        $createNewUserAction = new CreateNewUser();
+        $createNewUserAction->create($request->all());
+        return redirect()->route('dashboard');
     }
 
     public function search(Request $request)

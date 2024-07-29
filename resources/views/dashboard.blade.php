@@ -13,8 +13,8 @@
     </x-slot>
 
     <div class="py-12">
-        <x-validation-errors class="mb-4" />
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <x-validation-errors class="mb-4" />
             <div class="bg-gray-800 p-6 overflow-hidden shadow-xl sm:rounded-lg">
                     <div id="new-admin-card" class="flex flex-col gap-6 overflow-hidden rounded-lg p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 transition duration-300 focus:outline-none md:row-span-3 lg:p-10 lg:pb-10 bg-zinc-900 ring-zinc-800 hover:text-white/70 hover:ring-zinc-700 focus-visible:ring-[#FF2D20]">
                         <div id="new-admin-card-content">
@@ -28,7 +28,7 @@
                             </div>
 
                             <div class="collapse mt-3" id="newAdminCollapse">
-                                <form id="register-form" method="POST" action="{{ route('register') }}">
+                                <form id="register-form" method="POST" action="/registerAdmin">
                                     @csrf
 
                                     <div>

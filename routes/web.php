@@ -15,6 +15,8 @@ Route::middleware([
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
 });
 
+Route::post('/registerAdmin', [UserController::class, 'create']);
+
 Route::get('/search', [UserController::class, 'search']);
 
 Route::delete('/user', [UserController::class, 'delete']);
