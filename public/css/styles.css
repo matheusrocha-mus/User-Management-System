@@ -1,4 +1,4 @@
-h1 {
+h1, h5 {
     color: #FF2D20 !important;
 }
 
@@ -9,31 +9,6 @@ button {
 
 button:hover {
     background-color: #111111 !important;
-    color: white !important;
-}
-
-.search-bar input {
-    background-color: transparent !important;
-    border: 1px solid #FF2D20 !important;
-}
-
-.search-bar button {
-    border: 1px solid #FF2D20 !important;
-}
-
-.bi-arrow-down-square-fill:hover {
-    fill: #111111 !important;
-}
-
-.accordion-header button {
-    color: white !important;
-}
-
-.accordion-body {
-    background-color: #111111 !important;
-}
-
-.accordion-body p, .accordion-body button {
     color: white !important;
 }
 

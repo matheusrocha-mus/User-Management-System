@@ -2,6 +2,10 @@
 
 @section('title', 'Home')
 
+@push('styles')
+<link rel="stylesheet" type="text/css" href="{{ url('css/welcome.css') }}">
+@endpush
+
 @section('content')
 <main class="mt-6">
     <x-validation-errors class="mb-4" />
@@ -11,7 +15,7 @@
                 <h1 class="h1 font-semibold">Admin</h1>
 
                 @session('status')
-                    <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
+                    <div class="mb-4 font-medium text-sm text-green-400">
                         {{ $value }}
                     </div>
                 @endsession
@@ -25,8 +29,16 @@
                     </div>
 
                     <div class="mt-4">
-                        <x-label for="admin-password" value="{{ __('Password') }}" />
-                        <x-input id="admin-password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+                        <x-label class="form-label" for="admin-password" value="{{ __('Password') }}" />
+                        <div class="input-group">
+                            <x-input wire:model="password" id="admin-password" class="form-control" type="password" name="password" required autocomplete="current-password" />
+                            <button onclick="togglePassword(event)" type="button" class="btn btn-outline-secondary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
 
                     <input id="admin-login-role" type="hidden" name="role" value="ADMIN" />
@@ -34,13 +46,13 @@
                     <div class="block mt-4">
                         <label for="remember-admin" class="flex items-center">
                             <x-checkbox id="remember-admin" name="remember-admin" />
-                            <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
+                            <span class="ms-2 text-sm text-gray-400">{{ __('Remember me') }}</span>
                         </label>
                     </div>
 
                     <div class="flex items-center justify-end mt-4">
                         @if (Route::has('password.request'))
-                            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
+                            <a class="underline text-sm text-gray-400 hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800" href="{{ route('password.request') }}">
                                 {{ __('Forgot your password?') }}
                             </a>
                         @endif
@@ -58,7 +70,7 @@
                 <h1 class="h1 font-semibold">Regular User</h1>
 
                 @session('status')
-                    <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
+                    <div class="mb-4 font-medium text-sm text-green-400">
                         {{ $value }}
                     </div>
                 @endsession
@@ -72,8 +84,16 @@
                     </div>
 
                     <div class="mt-4">
-                        <x-label for="user-password" value="{{ __('Password') }}" />
-                        <x-input id="user-password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+                        <x-label class="form-label" for="user-password" value="{{ __('Password') }}" />
+                        <div class="input-group">
+                            <x-input wire:model="password" id="user-password" class="form-control" type="password" name="password" required autocomplete="current-password" />
+                            <button onclick="togglePassword(event)" type="button" class="btn btn-outline-secondary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
 
                     <input id="user-login-role" type="hidden" name="role" value="USER" />
@@ -81,13 +101,13 @@
                     <div class="block mt-4">
                         <label for="remember-user" class="flex items-center">
                             <x-checkbox id="remember-user" name="remember-user" />
-                            <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
+                            <span class="ms-2 text-sm text-gray-400">{{ __('Remember me') }}</span>
                         </label>
                     </div>
 
                     <div class="flex items-center justify-end mt-4">
                         @if (Route::has('password.request'))
-                            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
+                            <a class="underline text-sm text-gray-400 hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800" href="{{ route('password.request') }}">
                                 {{ __('Forgot your password?') }}
                             </a>
                         @endif
@@ -131,39 +151,34 @@
                     </div>
 
                     <div class="mt-4">
-                        <x-label for="register-password" value="{{ __('Password') }}" />
-                        <x-input id="register-password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                        <x-label class="form-label" for="register-password" value="{{ __('Password') }}" />
+                        <div class="input-group">
+                            <x-input wire:model="password" id="register-password" class="form-control" type="password" name="password" required autocomplete="new-password" />
+                            <button onclick="togglePassword(event)" type="button" class="btn btn-outline-secondary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
 
                     <div class="mt-4">
-                        <x-label for="register-password_confirmation" value="{{ __('Confirm Password') }}" />
-                        <x-input id="register-password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                        <x-label class="form-label" for="register-password-confirmation" value="{{ __('Confirm Password') }}" />
+                        <div class="input-group">
+                            <x-input wire:model="password" id="register-password-confirmation" class="form-control" type="password" name="password_confirmation" required autocomplete="off" />
+                            <button onclick="togglePassword(event)" type="button" class="btn btn-outline-secondary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
 
                     <input id="register-role" type="hidden" name="role" value="USER" />
 
-                    @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                        <div class="mt-4">
-                            <x-label for="terms">
-                                <div class="flex items-center">
-                                    <x-checkbox name="terms" id="terms" required />
-
-                                    <div class="ms-2">
-                                        {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                                'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">'.__('Terms of Service').'</a>',
-                                                'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">'.__('Privacy Policy').'</a>',
-                                        ]) !!}
-                                    </div>
-                                </div>
-                            </x-label>
-                        </div>
-                    @endif
-
                     <div class="flex items-center justify-end mt-4">
-                        <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                            {{ __('Already registered?') }}
-                        </a>
-
                         <x-button class="ms-4">
                             {{ __('Register') }}
                         </x-button>
