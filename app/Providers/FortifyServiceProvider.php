@@ -74,5 +74,9 @@ class FortifyServiceProvider extends ServiceProvider
             } else {
             }
         });
+
+        Fortify::loginView(function () {
+            return view('welcome');
+        });
     }
 }

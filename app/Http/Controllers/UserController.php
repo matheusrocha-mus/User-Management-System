@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Actions\Fortify\CreateNewUser;
-use App\Actions\Jetstream\DeleteUser;
 use Illuminate\Http\Request;
 use Hamcrest\Core\IsNull;
 
@@ -12,9 +11,9 @@ class UserController extends Controller
 {
     public function dashboard()
     {
-        if (auth()->user()->role == 'USER') {
+        if (auth()->user()->role == 'USER') { // Redirect user to profile if they are logged and are a USER
             return redirect()->route('profile.show');
-        } else {
+        } else if (auth()->user()->role == 'ADMIN') { // Redirect user to dashboard if they are logged and are an ADMIN
             $users = User::where('id', '!=', auth()->id())->get();
             return view('dashboard', compact('users'));
         }
@@ -64,8 +63,6 @@ class UserController extends Controller
     public function delete(Request $request)
     {
         $id = $request->userToDelete;
-
-        error_log('userId: '.$id);
 
         $user = User::find($id);
         $user->delete();
