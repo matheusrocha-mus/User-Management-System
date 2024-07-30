@@ -27,7 +27,8 @@ This project was part of a recruitment process that I participated in for a job 
 # Setup Process
 1. Clone the repo (`git clone https://github.com/matheusrocha-mus/User-Management-System.git`);
 2. Update the `.env` file to use SQLite (set `DB_CONNECTION=sqlite`, comment out the rest of the DB section);
-3. At the repo's root, enter the command `npm run dev` (install npm if you don't have yet);
-4. Then, follow with the command `php artisan migrate`;
-5. Then, `php artisan db:seed` - this will generate some dummy users and admins. The email of the default Admin is 'admin@example.com' and it's password is '1234A&5678b';
-6. Finally, `php artisan serve` - if all steps were followed correctly, the application should be up and running at `http://localhost:8000`.
+3. At the repo's root, enter the command `npm install` (install npm if you don't have yet);
+4. Then, follow with the command `npm run dev`;
+5. Then, `php artisan migrate`;
+6. Then, `php artisan db:seed` - this will generate some dummy users and an admin. The email of the default Admin is 'admin@example.com' and it's password is '1234A&5678b';
+7. Finally, `php artisan serve` - if all steps were followed correctly, the application should be up and running at `http://localhost:8000`.
