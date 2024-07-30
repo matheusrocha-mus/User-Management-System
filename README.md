@@ -25,10 +25,17 @@ This project was part of a recruitment process that I participated in for a job 
 - All operations fully integrated with a SQLite database.
 
 # Setup Process
-1. Clone the repo (`git clone https://github.com/matheusrocha-mus/User-Management-System.git`);
-2. Update the `.env` file to use SQLite (set `DB_CONNECTION=sqlite`, comment out the rest of the DB section);
-3. At the repo's root, enter the command `npm install` (install npm if you don't have yet);
-4. Then, follow with the command `npm run dev`;
-5. Then, `php artisan migrate`;
-6. Then, `php artisan db:seed` - this will generate some dummy users and an admin. The email of the default Admin is 'admin@example.com' and it's password is '1234A&5678b';
-7. Finally, `php artisan serve` - if all steps were followed correctly, the application should be up and running at `http://localhost:8000`.
+1. <a href="https://www.apachefriends.org/download.html" target="_blank">Download XAMPP to install PHP and the other Laravel dependencies</a>, if you haven't already;
+2. Clone the repo with `git clone https://github.com/matheusrocha-mus/User-Management-System.git`;
+3. <a href="https://nodejs.org/en/download/package-manager" target="_blank">Install NPM</a>, if you haven't already;
+4. At the repo's root, enter the command `npm install`;
+5. Then, follow with the command `npm run dev`;
+6. <a href="https://getcomposer.org/download/" target="_blank">Install composer</a>, if you haven't already;
+7. Enter the command `composer install`;
+8. Rename the `.env.example` file as `.env`;
+9. In the content of the `.env` file, set `DB_CONNECTION=sqlite` and comment out the rest of the DB section - this will set our DB as SQLite;
+10. Enter the command `php artisan migrate`;
+11. Then, follow with the command `php artisan db:seed` - this will generate some dummy users and an admin;
+    - The email of the default Admin is 'admin@example.com' and it's password is '1234A&5678b';
+12. Then, `php artisan key:generate`;
+13. Finally, enter `php artisan serve` - if all steps were followed correctly, the application should be up and running at `http://localhost:8000`.
