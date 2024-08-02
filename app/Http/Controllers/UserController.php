@@ -13,7 +13,7 @@ class UserController extends Controller
     {
         if (auth()->user()->role == 'USER') { // Redirect user to profile if they are logged and are a USER
             return redirect()->route('profile.show');
-        } else if (auth()->user()->role == 'ADMIN') { // Redirect user to dashboard if they are logged and are an ADMIN
+        } else if (auth()->user()->role == 'ADMIN') { // Return dashboard view to user if they are logged and are an ADMIN
             $users = User::where('id', '!=', auth()->id())->get();
             return view('dashboard', compact('users'));
         }
@@ -21,9 +21,13 @@ class UserController extends Controller
 
     public function create(Request $request)
     {
-        $createNewUserAction = new CreateNewUser();
-        $createNewUserAction->create($request->all());
-        return redirect()->route('dashboard');
+        try {
+            $createNewUserAction = new CreateNewUser();
+            $createNewUserAction->create($request->all());
+        } catch (\Exception $e) {
+            return redirect()->route('dashboard')->with('error', 'User registration failed');
+        }
+        return redirect()->route('dashboard')->with('success', 'User registered successfully');
     }
 
     public function search(Request $request)
@@ -64,8 +68,12 @@ class UserController extends Controller
     {
         $id = $request->userToDelete;
 
-        $user = User::find($id);
-        $user->delete();
-        return redirect()->route('dashboard');
+        try {
+            $user = User::find($id);
+            $user->delete();
+        } catch (\Exception $e) {
+            return back()->with('error', 'User deletion failed');
+        }
+        return back()->with('success', 'User deleted successfully');
     }
 }
